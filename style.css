@@ -1,5 +1,5 @@
 /* ==========================================================================
-   HIXIOM² — COMPLETELY ERROR-FREE CSS ARCHITECTURE
+   HIXIOM² — UNFEHLBARES CSS LAYOUT
    ========================================================================== */
 
 :root {
@@ -24,7 +24,7 @@ body {
     height: 100vh;
 }
 
-/* FILM GRAIN (ANIMIERTES FILMKORN) */
+/* FILMKORN */
 .film-grain {
     position: fixed;
     top: -50%;
@@ -49,7 +49,7 @@ body {
     90% { transform:translate(10%, -5%); }
 }
 
-/* INTRO SCREEN (STARTZUSTAND) */
+/* INTRO SCREEN (GROSS, WEISS, KLICKBAR) */
 #intro-screen {
     position: fixed;
     top: 0;
@@ -61,7 +61,8 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    transition: opacity 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
+    transition: opacity 0.8s ease-in-out;
 }
 
 .intro-content {
@@ -70,22 +71,28 @@ body {
 
 .intro-title {
     font-family: 'Syne', sans-serif;
-    font-size: 3.5rem;
+    font-size: 4rem; /* Extrem groß */
     font-weight: 700;
-    letter-spacing: 4px;
-    margin-bottom: 10px;
-    opacity: 0; /* Wird von JS hochgefahren */
+    color: #ffffff; /* Absolut reinweiß */
+    letter-spacing: 6px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
 }
 
 .intro-subtitle {
-    font-size: 0.9rem;
+    font-size: 1rem;
     letter-spacing: 2px;
     color: var(--text-muted);
     text-transform: uppercase;
-    opacity: 0; /* Wird von JS hochgefahren */
+    animation: pulsieren 2s infinite ease-in-out;
 }
 
-/* HAUPTSEITE & PROFIL */
+@keyframes pulsieren {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+}
+
+/* PROFIL SEITE */
 #main-content {
     min-height: 100vh;
     height: auto;
@@ -94,13 +101,13 @@ body {
     align-items: center;
     padding: 40px 20px;
     background: radial-gradient(circle at center, var(--olive-dark) 0%, var(--bg-black) 100%);
-    opacity: 0; /* Startet unsichtbar, JS blendet es ein */
-    transform: scale(1.05);
-    transition: all 2s cubic-bezier(0.215, 0.610, 0.355, 1);
+    opacity: 0;
+    transform: scale(0.98);
+    transition: all 0.8s ease-in-out;
 }
 
-/* Klassen, wenn die Animation feuert */
-body.animation-ready #main-content {
+/* Wenn das Intro weggeklickt wird, aktivieren wir das hier */
+body.show-profile #main-content {
     opacity: 1;
     transform: scale(1);
 }
@@ -148,9 +155,7 @@ body.animation-ready #main-content {
     font-weight: 600;
     letter-spacing: 1px;
     font-size: 0.95rem;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    position: relative;
-    overflow: hidden;
+    transition: all 0.3s ease;
     background: rgba(30, 30, 30, 0.6);
     border: 1px solid rgba(244, 241, 234, 0.05);
     color: var(--cream-white);
@@ -164,7 +169,7 @@ body.animation-ready #main-content {
 .social-links a:nth-child(5) { animation-delay: 1.2s; }
 
 .social-btn:hover {
-    transform: translateY(-4px) scale(1.02);
+    transform: translateY(-4px);
     border-color: rgba(244, 241, 234, 0.3);
     color: #fff;
     box-shadow: 0 0 20px var(--glow-color);
