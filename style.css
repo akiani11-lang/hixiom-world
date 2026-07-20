@@ -1,5 +1,5 @@
 /* ==========================================================================
-   HIXIOM² — ABSOLUT UNFEHLBARES CSS (DIREKTSTART)
+   HIXIOM² — COMPLETELY INTERACTIVE PURE CSS ARCHITECTURE
    ========================================================================== */
 
 :root {
@@ -20,7 +20,8 @@ body {
     background-color: var(--bg-black);
     color: var(--cream-white);
     font-family: 'Plus Jakarta Sans', sans-serif;
-    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden; /* Verhindert Scrollen auf dem Startbildschirm */
     background: radial-gradient(circle at center, var(--olive-dark) 0%, var(--bg-black) 100%);
 }
 
@@ -49,32 +50,91 @@ body {
     90% { transform:translate(10%, -5%); }
 }
 
-/* HAUPT-LAYOUT (ZENTRIERT ALLES) */
+/* STARTBILDSCHIRM (INTRO SCREEN) */
+#intro-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    cursor: pointer;
+    transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.intro-content {
+    text-align: center;
+}
+
+.intro-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 6px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.intro-subtitle {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.click-notice {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+    animation: pulsieren 2s infinite ease-in-out;
+}
+
+@keyframes pulsieren {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+/* HAUPT-LAYOUT (DEINE SEITE MIT BIO & LINKS) */
 #main-content {
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 60px 20px;
-    gap: 30px; /* Abstand zwischen großem Titel und Kasten */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    opacity: 0; /* Startet komplett unsichtbar */
+    transform: translateY(40px); /* Startet etwas tiefer für einen edlen Schiebe-Effekt */
+    transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+    pointer-events: none; /* Blockiert Klicks, solange das Intro da ist */
 }
 
-/* DEIN FETTER, GROSSER, WEISSER TITEL GANZ OBEN */
-.main-page-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 3.5rem; /* Richtig groß */
-    font-weight: 700;
-    color: #ffffff; /* Reinweiß */
-    letter-spacing: 8px;
-    text-transform: uppercase;
-    text-align: center;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+/* MAGISCHER KLICK-EFFEKT: Wenn die Checkbox aktiv ist */
+#page-toggle:checked ~ #intro-screen {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.05); /* Intro zoomt beim Ausfaden leicht weg */
+}
+
+#page-toggle:checked ~ #main-content {
+    opacity: 1;
+    transform: translateY(0); /* Gleitet sanft nach oben auf die Originalposition */
+    pointer-events: auto; /* Aktiviert die Klicks für deine Social-Buttons */
 }
 
 /* PROFIL KASTEN (GLAS-EFFEKT) */
 .profile-container {
-    background: rgba(26, 26, 26, 0.5);
+    background: rgba(26, 26, 26, 0.4);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(244, 241, 234, 0.08);
@@ -88,7 +148,7 @@ body {
 
 .profile-name {
     font-family: 'Syne', sans-serif;
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 700;
     letter-spacing: 2px;
     margin-bottom: 15px;
@@ -117,7 +177,7 @@ body {
     font-weight: 600;
     letter-spacing: 1px;
     font-size: 0.95rem;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     background: rgba(35, 35, 35, 0.6);
     border: 1px solid rgba(244, 241, 234, 0.05);
     color: var(--cream-white);
@@ -131,7 +191,7 @@ body {
 .social-links a:nth-child(5) { animation-delay: 1.2s; }
 
 .social-btn:hover {
-    transform: translateY(-4px);
+    transform: translateY(-4px) scale(1.02);
     border-color: rgba(244, 241, 234, 0.3);
     color: #fff;
     box-shadow: 0 0 20px var(--glow-color);
