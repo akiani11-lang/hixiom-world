@@ -1,0 +1,169 @@
+:root {
+    --bg-black: #0a0a0a;
+    --olive-dark: #1b241c;
+    --cream-white: #f4f1ea;
+    --dark-gray: #1e1e1e;
+    --text-muted: rgba(244, 241, 234, 0.6);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-black);
+    color: var(--cream-white);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow: hidden;
+}
+
+.film-grain {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    width: 200%;
+    height: 200%;
+    background: transparent url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://w3.org"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E') repeat;
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 9999;
+    animation: grain 0.5s steps(10) infinite;
+}
+
+@keyframes grain {
+    0%, 100% { transform:translate(0, 0); }
+    10% { transform:translate(-5%, -10%); }
+    30% { transform:translate(-15%, 5%); }
+    50% { transform:translate(-5%, 25%); }
+    70% { transform:translate(15%, 15%); }
+    90% { transform:translate(10%, -5%); }
+}
+
+#intro-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.intro-content {
+    text-align: center;
+}
+
+.intro-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+    opacity: 0;
+    filter: blur(10px);
+}
+
+.intro-subtitle {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    opacity: 0;
+    filter: blur(5px);
+}
+
+#main-content {
+    min-height: 100vh;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    background: radial-gradient(circle at center, var(--olive-dark) 0%, var(--bg-black) 100%);
+    opacity: 0;
+    transform: scale(1.05);
+}
+
+.profile-container {
+    background: rgba(26, 26, 26, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(244, 241, 234, 0.08);
+    padding: 40px;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.profile-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.profile-bio {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: 35px;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.social-btn {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 0.95rem;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+    background: rgba(30, 30, 30, 0.6);
+    border: 1px solid rgba(244, 241, 234, 0.05);
+    color: var(--cream-white);
+    animation: floatButton 4s ease-in-out infinite alternate;
+}
+
+.social-links a:nth-child(1) { animation-delay: 0.0s; }
+.social-links a:nth-child(2) { animation-delay: 0.3s; }
+.social-links a:nth-child(3) { animation-delay: 0.6s; }
+.social-links a:nth-child(4) { animation-delay: 0.9s; }
+.social-links a:nth-child(5) { animation-delay: 1.2s; }
+
+.social-btn:hover {
+    transform: translateY(-4px) scale(1.02);
+    border-color: rgba(244, 241, 234, 0.3);
+    color: #fff;
+    box-shadow: 0 0 20px var(--glow-color);
+    background: var(--glow-color-subtle);
+}
+
+.btn-roblox    { --glow-color: rgba(244, 241, 234, 0.2); --glow-color-subtle: rgba(244, 241, 234, 0.05); }
+.btn-discord   { --glow-color: rgba(88, 101, 242, 0.3);  --glow-color-subtle: rgba(88, 101, 242, 0.1); }
+.btn-spotify   { --glow-color: rgba(29, 185, 84, 0.3);   --glow-color-subtle: rgba(29, 185, 84, 0.1); }
+.btn-instagram { --glow-color: rgba(225, 48, 108, 0.25); --glow-color-subtle: rgba(225, 48, 108, 0.08); }
+.btn-tiktok    { --glow-color: rgba(0, 242, 234, 0.2);   --glow-color-subtle: rgba(0, 242, 234, 0.05); }
+
+@keyframes floatButton {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-4px); }
+}
