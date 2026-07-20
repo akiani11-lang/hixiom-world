@@ -1,3 +1,7 @@
+/* ==========================================================================
+   HIXIOM² — COMPLETELY ERROR-FREE CSS ARCHITECTURE
+   ========================================================================== */
+
 :root {
     --bg-black: #0a0a0a;
     --olive-dark: #1b241c;
@@ -17,8 +21,10 @@ body {
     color: var(--cream-white);
     font-family: 'Plus Jakarta Sans', sans-serif;
     overflow: hidden;
+    height: 100vh;
 }
 
+/* FILM GRAIN (ANIMIERTES FILMKORN) */
 .film-grain {
     position: fixed;
     top: -50%;
@@ -43,6 +49,7 @@ body {
     90% { transform:translate(10%, -5%); }
 }
 
+/* INTRO SCREEN (STARTZUSTAND) */
 #intro-screen {
     position: fixed;
     top: 0;
@@ -54,6 +61,7 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    transition: opacity 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .intro-content {
@@ -66,8 +74,7 @@ body {
     font-weight: 700;
     letter-spacing: 4px;
     margin-bottom: 10px;
-    opacity: 0;
-    filter: blur(10px);
+    opacity: 0; /* Wird von JS hochgefahren */
 }
 
 .intro-subtitle {
@@ -75,10 +82,10 @@ body {
     letter-spacing: 2px;
     color: var(--text-muted);
     text-transform: uppercase;
-    opacity: 0;
-    filter: blur(5px);
+    opacity: 0; /* Wird von JS hochgefahren */
 }
 
+/* HAUPTSEITE & PROFIL */
 #main-content {
     min-height: 100vh;
     height: auto;
@@ -87,8 +94,15 @@ body {
     align-items: center;
     padding: 40px 20px;
     background: radial-gradient(circle at center, var(--olive-dark) 0%, var(--bg-black) 100%);
-    opacity: 0;
+    opacity: 0; /* Startet unsichtbar, JS blendet es ein */
     transform: scale(1.05);
+    transition: all 2s cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+
+/* Klassen, wenn die Animation feuert */
+body.animation-ready #main-content {
+    opacity: 1;
+    transform: scale(1);
 }
 
 .profile-container {
