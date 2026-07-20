@@ -12,22 +12,20 @@
 </head>
 <body>
 
-    <!-- Der unfehlbare Klick-Auslöser über reines CSS -->
-    <input type="checkbox" id="page-toggle" style="display: none;">
-
     <!-- Das feine Filmkorn läuft im Hintergrund -->
     <div class="film-grain"></div>
 
-    <!-- DER STARTBILDSCHIRM (Klickbar über das Label) -->
-    <label for="page-toggle" id="intro-screen">
+    <!-- SEKTION 1: DER STARTBILDSCHIRM (Intro) -->
+    <header id="intro-screen">
         <div class="intro-content">
             <h1 class="intro-title">HIXIOM²</h1>
             <p class="intro-subtitle">Singer • Gamer • Developer • Dreamer</p>
-            <span class="click-notice">[ Hier klicken um einzutreten ]</span>
+            <!-- Ein echter, sicherer Link, der nach unten springt -->
+            <a href="#main-content" class="enter-link">[ Hier klicken um einzutreten ]</a>
         </div>
-    </label>
+    </header>
 
-    <!-- DEINE PROFIL- UND ABOUT-PAGE -->
+    <!-- SEKTION 2: DEINE PROFIL- UND ABOUT-PAGE -->
     <main id="main-content">
         <div class="profile-container">
             
@@ -36,6 +34,25 @@
                 <p class="profile-bio">
                     Hi, I’m Hix. Welcome to my little corner of the internet. I’m passionate about music, gaming, development and creating memorable experiences. I love creating new things, meeting people and sharing my creativity with the world.
                 </p>
+            </div>
+
+            <!-- Deine Erlebnisse (About-Page) direkt integriert -->
+            <div class="about-section">
+                <h3 class="about-title">Experiences</h3>
+                <div class="experience-cards">
+                    <div class="card">
+                        <h4>🍝 Pablo’s Italiano Restaurant</h4>
+                        <p>Head Waiter</p>
+                    </div>
+                    <div class="card">
+                        <h4>☕ CRP Cafe</h4>
+                        <p>Co-Founder</p>
+                    </div>
+                    <div class="card">
+                        <h4>🛡️ Drinko’s</h4>
+                        <p>Security Manager & Developer</p>
+                    </div>
+                </div>
             </div>
 
             <!-- Schwebende, glühende Social Buttons -->
