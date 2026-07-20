@@ -3,286 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HIXIOM² — Personal Website Concept</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Syne:wght@500;700&display=swap" rel="stylesheet">
-    
+    <title>HIXIOM²</title>
+    <link href="https://googleapis.com" rel="stylesheet">
     <style>
-        /* ==========================================================================
-           HIXIOM² — ALL-IN-ONE CSS ARCHITECTURE (GARANTIERT UNBLOCKIERBAR)
-           ========================================================================== */
-        :root {
-            --bg-black: #0a0a0a;
-            --olive-dark: #1b241c;
-            --cream-white: #f4f1ea;
-            --dark-gray: #151515;
-            --text-muted: rgba(244, 241, 234, 0.6);
-        }
+        :root { --bg: #0a0a0a; --olive: #1b241c; --cream: #f4f1ea; --muted: rgba(244, 241, 234, 0.6); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { background: radial-gradient(circle, var(--olive) 0%, var(--bg) 100%) fixed; color: var(--cream); font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+        
+        /* FILMKORN & SCHMETTERLINGE */
+        .grain { position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; background: transparent url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://w3.org"%3E%3Cfilter id="n"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23n)"/%3E%3C/svg%3E') repeat; opacity: 0.04; pointer-events: none; z-index: 9999; animation: g 0.5s steps(10) infinite; }
+        @keyframes g { 0%, 100% { transform:translate(0, 0); } 50% { transform:translate(-5%, 15%); } }
+        .bf { position: fixed; width: 8px; height: 8px; background: rgba(244, 241, 234, 0.2); border-radius: 50%; filter: blur(1px); animation: fly 12s infinite linear; pointer-events: none; }
+        @keyframes fly { 0% { transform: translateY(105vh) translateX(0); opacity: 0; } 50% { opacity: 0.5; } 100% { transform: translateY(-5vh) translateX(80px); opacity: 0; } }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* INTRO SCREEN */
+        #intro { width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; background: #000; text-align: center; }
+        .title { font-family: 'Syne', sans-serif; font-size: 3.5rem; letter-spacing: 6px; color: #fff; margin-bottom: 10px; }
+        .sub { font-size: 0.85rem; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; margin-bottom: 40px; }
+        .lnk { font-size: 0.8rem; letter-spacing: 1px; color: rgba(255,255,255,0.4); text-decoration: none; padding: 10px 20px; border: 1px solid rgba(244,241,234,0.1); border-radius: 30px; animation: p 2s infinite; }
+        @keyframes p { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        /* MAIN DASHBOARD */
+        #main { max-width: 500px; margin: 0 auto; padding: 60px 20px; display: flex; flex-direction: column; gap: 30px; }
+        .box { background: rgba(26, 26, 26, 0.4); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(244, 241, 234, 0.08); padding: 30px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        .bar { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--muted); margin-bottom: 20px; background: rgba(0,0,0,0.2); padding: 8px 12px; border-radius: 8px; }
+        .h2 { font-family: 'Syne', sans-serif; font-size: 2rem; text-align: center; margin-bottom: 15px; }
+        .bio { font-size: 0.9rem; line-height: 1.5; color: var(--muted); text-align: center; margin-bottom: 20px; }
+        
+        /* SOCIAL BUTTONS WITH GLOW */
+        .btn { display: block; padding: 14px; margin-top: 12px; border-radius: 10px; text-decoration: none; font-weight: 600; text-align: center; color: var(--cream); background: rgba(35,35,35,0.5); border: 1px solid rgba(244,241,234,0.04); transition: all 0.3s; animation: f 4s ease-in-out infinite alternate; }
+        .btn:hover { transform: translateY(-3px); color: #fff; box-shadow: 0 0 20px var(--g); background: var(--gs); }
+        .b-rbx { --g: rgba(244,241,234,0.2); --gs: rgba(244,241,234,0.05); animation-delay: 0s; }
+        .b-dsc { --g: rgba(88,101,242,0.3);  --gs: rgba(88,101,242,0.1);  animation-delay: 0.3s; }
+        .b-spt { --g: rgba(29,185,84,0.3);   --gs: rgba(29,185,84,0.1);   animation-delay: 0.6s; }
+        .b-ins { --g: rgba(225,48,108,0.25); --gs: rgba(225,48,108,0.08); animation-delay: 0.9s; }
+        @keyframes f { 0% { transform: translateY(0); } 100% { transform: translateY(-4px); } }
 
-        body {
-            background-color: var(--bg-black);
-            color: var(--cream-white);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background: radial-gradient(circle at center, var(--olive-dark) 0%, var(--bg-black) 100%);
-            background-attachment: fixed;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+        /* SECTIONS & CARDS */
+        .t { font-family: 'Syne', sans-serif; font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; border-bottom: 1px solid rgba(244,241,234,0.1); padding-bottom: 6px; }
+        .c { background: rgba(15,15,15,0.4); padding: 12px; border-radius: 10px; margin-top: 10px; }
+        .c h4 { font-size: 0.9rem; margin-bottom: 2px; }
+        .c p { font-size: 0.8rem; color: var(--muted); }
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        .i { background: rgba(15,15,15,0.4); padding: 12px; border-radius: 10px; text-align: center; font-size: 0.85rem; }
 
-        /* 1. ANIMIERTES FILMKORN */
-        .film-grain {
-            position: fixed;
-            top: -50%; left: -50%; right: -50%; bottom: -50%;
-            width: 200%; height: 200%;
-            background: transparent url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://w3.org"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E') repeat;
-            opacity: 0.04;
-            pointer-events: none;
-            z-index: 9999;
-            animation: grain 0.5s steps(10) infinite;
-        }
+        /* POLAROID GALERIE */
+        .gal { display: flex; justify-content: center; gap: 15px; padding: 10px 0; }
+        .pld { background: #f4f1ea; color: #111; padding: 8px 8px 20px 8px; border-radius: 2px; width: 100px; text-align: center; font-size: 0.7rem; font-weight: bold; transition: 0.3s; }
+        .pld div { width: 100%; height: 80px; background: #222; border-radius: 2px; }
+        .pld:nth-child(1) { transform: rotate(-5deg); } .pld:nth-child(2) { transform: rotate(4deg); } .pld:nth-child(3) { transform: rotate(-2deg); }
+        .pld:hover { transform: scale(1.15) rotate(0deg) translateY(-5px); z-index: 5; }
 
-        @keyframes grain {
-            0%, 100% { transform:translate(0, 0); }
-            10% { transform:translate(-5%, -10%); }
-            30% { transform:translate(-15%, 5%); }
-            50% { transform:translate(-5%, 25%); }
-            70% { transform:translate(15%, 15%); }
-            90% { transform:translate(10%, -5%); }
-        }
+        /* MUSIK PLAYER & HEART */
+        .ply { display: flex; align-items: center; gap: 15px; background: rgba(15,15,15,0.4); padding: 12px; border-radius: 12px; }
+        .vnl { width: 40px; height: 40px; background: radial-gradient(circle, #111 30%, #444 60%, #111 70%); border-radius: 50%; animation: spin 4s linear infinite; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        .hrt { background: rgba(255,255,255,0.03); border: 1px solid rgba(244,241,234,0.1); color: var(--cream); padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; display: block; margin: 15px auto 0 auto; transition: 0.3s; }
+        .hrt:hover { background: rgba(225,48,108,0.1); color: #e1306c; border-color: rgba(225,48,108,0.3); }
+    </style>
+</head>
+<body>
 
-        /* 2. SCHMETTERLINGS-ANIMATION */
-        .butterfly-container {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: 5;
-            overflow: hidden;
-        }
-        .butterfly {
-            position: absolute;
-            width: 12px; height: 12px;
-            background: rgba(244, 241, 234, 0.2);
-            border-radius: 50%;
-            filter: blur(2px);
-            animation: fly 15s infinite linear;
-        }
-        @keyframes fly {
-            0% { transform: translateY(105vh) translateX(0px) scale(0.5); opacity: 0; }
-            10% { opacity: 0.6; }
-            90% { opacity: 0.6; }
-            100% { transform: translateY(-5vh) translateX(100px) scale(1.2); opacity: 0; }
-        }
+    <div class="grain"></div>
+    <div class="bf" style="left: 15%; animation-delay: 0s;"></div>
+    <div class="bf" style="left: 65%; animation-delay: 3s;"></div>
 
-        /* 3. STARTBILDSCHIRM (INTRO SCREEN) */
-        #intro-screen {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: var(--bg-black);
-            position: relative;
-            z-index: 10;
-        }
+    <!-- INTRO -->
+    <header id="intro">
+        <div>
+            <h1 class="title">HIXIOM²</h1>
+            <p class="sub">Singer • Gamer • Developer • Dreamer</p>
+            <a href="#main" class="lnk">[ Eintreten ]</a>
+        </div>
+    </header>
 
-        .intro-content {
-            text-align: center;
-        }
+    <!-- MAIN WORLD -->
+    <main id="main">
+        
+        <!-- PROFIL & LINKS -->
+        <div class="box">
+            <div class="bar"><span id="time">00:00:00</span><span>Discord: <span style="color:#43b581">● Online</span></span></div>
+            <h2 class="h2">hixiom²</h2>
+            <p class="bio">Hi, I’m Hix. Welcome to my little corner of the internet. I’m passionate about music, gaming, development and creating memorable experiences.</p>
+            <button class="hrt" onclick="lk()">🖤 <span id="lc">142</span> Likes</button>
+            <div class="social-links">
+                <a href="#" class="btn b-rbx" target="_blank">Roblox</a>
+                <a href="#" class="btn b-dsc" target="_blank">Discord</a>
+                <a href="#" class="btn b-spt" target="_blank">Spotify</a>
+                <a href="#" class="btn b-ins" target="_blank">Instagram</a>
+            </div>
+        </div>
 
-        .intro-title {
-            font-family: 'Syne', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: #ffffff;
-            letter-spacing: 6px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
+        <!-- EXPERIENCES -->
+        <div class="box">
+            <h3 class="t">Experiences</h3>
+            <div class="c"><h4>🍝 Pablo’s Italiano Restaurant</h4><p>Head Waiter</p></div>
+            <div class="c"><h4>☕ CRP Cafe</h4><p>Co-Founder</p></div>
+            <div class="c"><h4>🛡️ Drinko’s</h4><p>Security Manager & Developer</p></div>
+        </div>
 
-        .intro-subtitle {
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            margin-bottom: 40px;
-        }
+        <!-- PLAYBOX -->
+        <div class="box">
+            <h3 class="t">Music Box</h3>
+            <div class="ply">
+                <div class="vnl"></div>
+                <div style="flex-grow:1"><h4>L’Amour de ma vie</h4><p style="font-size:0.75rem;color:var(--muted)">Billie Eilish (Inspiration)</p></div>
+            </div>
+        </div>
 
-        .enter-link {
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            color: rgba(255, 255, 255, 0.4);
-            text-transform: uppercase;
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid rgba(244, 241, 234, 0.1);
-            border-radius: 30px;
-            transition: all 0.3s ease;
-            animation: pulsieren 2s infinite ease-in-out;
-        }
+        <!-- GALERIE -->
+        <div class="box">
+            <h3 class="t">Gallery</h3>
+            <div class="gal">
+                <div class="pld"><div style="background:#442222"></div><p>🎵 Music</p></div>
+                <div class="pld"><div style="background:#224422"></div><p>🎮 Gaming</p></div>
+                <div class="pld"><div style="background:#222244"></div><p>💻 Dev</p></div>
+            </div>
+        </div>
 
-        .enter-link:hover {
-            color: #ffffff;
-            background: rgba(244, 241, 234, 0.05);
-            border-color: rgba(244, 241, 234, 0.3);
-        }
+        <!-- LIKES -->
+        <div class="box">
+            <h3 class="t">Likes</h3>
+            <div class="grid">
+                <div class="i">🎮 Gaming</div><div class="i">🎵 Music</div>
+                <div class="i">💻 Developing</div><div class="i">🌿 Nature</div>
+            </div>
+        </div>
 
-        @keyframes pulsieren {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 1; }
-        }
+    </main>
 
-        /* 4. MAIN CONTENT & SEKTIONEN */
-        #main-content {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 80px 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-
-        /* GLAS-CONTAINER STYLING */
-        .glass-box {
-            background: rgba(26, 26, 26, 0.4);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(244, 241, 234, 0.08);
-            padding: 40px;
-            border-radius: 24px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-        }
-
-        /* PROFIL SEKTION */
-        .profile-center {
-            text-align: center;
-        }
-        .profile-name {
-            font-family: 'Syne', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-        }
-        .profile-bio {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: var(--text-muted);
-            margin-bottom: 25px;
-        }
-
-        /* LIVE CLOCK & STATUS */
-        .status-bar {
-            display: flex;
-            justify-content: space-around;
-            background: rgba(10, 10, 10, 0.4);
-            padding: 12px;
-            border-radius: 12px;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-        .status-dot {
-            color: #43b581; /* Discord Online Grün */
-            font-weight: 600;
-        }
-
-        /* SOCIAL LINK BUTTONS */
-        .social-links {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-top: 25px;
-        }
-        .social-btn {
-            display: block;
-            width: 100%;
-            padding: 16px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            letter-spacing: 1px;
-            font-size: 0.95rem;
-            text-align: center;
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            background: rgba(35, 35, 35, 0.6);
-            border: 1px solid rgba(244, 241, 234, 0.05);
-            color: var(--cream-white);
-            animation: floatButton 4s ease-in-out infinite alternate;
-        }
-        .social-links a:nth-child(1) { animation-delay: 0.0s; }
-        .social-links a:nth-child(2) { animation-delay: 0.4s; }
-        .social-links a:nth-child(3) { animation-delay: 0.8s; }
-        .social-links a:nth-child(4) { animation-delay: 1.2s; }
-        .social-links a:nth-child(5) { animation-delay: 1.6s; }
-
-        .social-btn:hover {
-            transform: translateY(-4px) scale(1.02);
-            border-color: rgba(244, 241, 234, 0.3);
-            color: #fff;
-            box-shadow: 0 0 25px var(--glow-color);
-            background: var(--glow-color-subtle);
-        }
-        .btn-roblox    { --glow-color: rgba(244, 241, 234, 0.2); --glow-color-subtle: rgba(244, 241, 234, 0.05); }
-        .btn-discord   { --glow-color: rgba(88, 101, 242, 0.35); --glow-color-subtle: rgba(88, 101, 242, 0.1); }
-        .btn-spotify   { --glow-color: rgba(29, 185, 84, 0.35);  --glow-color-subtle: rgba(29, 185, 84, 0.1); }
-        .btn-instagram { --glow-color: rgba(225, 48, 108, 0.3);  --glow-color-subtle: rgba(225, 48, 108, 0.08); }
-        .btn-tiktok    { --glow-color: rgba(0, 242, 234, 0.25);  --glow-color-subtle: rgba(0, 242, 234, 0.05); }
-
-        @keyframes floatButton {
-            0% { transform: translateY(0px); }
-            100% { transform: translateY(-4px); }
-        }
-
-        /* SEKTIONS-TITEL STYLING */
-        .section-title {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 20px;
-            border-bottom: 1px solid rgba(244, 241, 234, 0.1);
-            padding-bottom: 8px;
-        }
-
-        /* ABOUT / EXPERIENCES AREA */
-        .experience-list {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-        .exp-card {
-            background: rgba(15, 15, 15, 0.5);
-            border: 1px solid rgba(244, 241, 234, 0.04);
-            padding: 16px;
-            border-radius: 14px;
-            transition: all 0.3s ease;
-        }
-        .exp-card:hover {
-            background: rgba(30, 30, 30, 0.5);
-            border-color: rgba(244, 241, 234, 0.1);
-        }
-        .exp-card h4 { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
-        .exp-card p { font-size: 0.85rem; color: var(--text-muted); }
-
-        /* LIKES GRID CARDS */
-        .likes-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-        .like-item {
-            background: rgba(15, 15, 15, 0.4);
-            border: 1px solid rgba(244, 241, 234, 0.04);
-            padding: 16px;
-border-radius: 12px;text-align: center;font-size: 0.9rem;letter-spacing: 1px;}/* POLAROID GALERIE */.polaroid-gallery {display: flex;justify-content: center;gap: 20px;padding: 20px 0;flex-wrap: wrap;}.polaroid {background: #f4f1ea;color: #111;padding: 12px 12px 25px 12px;border-radius: 4px;box-shadow: 0 10px 30px rgba(0,0,0,0.5);width: 130px;transition: all 0.4s ease;}.polaroid-img {width: 100%;height: 110px;background: #222;display: flex;align-items: center;justify-content: center;color: #555;font-size: 0.8rem;border-radius: 2px;}.polaroid p {text-align: center;font-family: 'Syne', sans-serif;font-size: 0.75rem;margin-top: 10px;font-weight: bold;}.polaroid:nth-child(1) { transform: rotate(-5deg); }.polaroid:nth-child(2) { transform: rotate(3deg); }.polaroid:nth-child(3) { transform: rotate(-2deg); }.polaroid:hover {transform: scale(1.1) rotate(0deg) translateY(-10px);z-index: 10;box-shadow: 0 20px 40px rgba(0,0,0,0.7);}/* ELEGANTER MUSIK PLAYER */.music-player {display: flex;align-items: center;gap: 20px;background: rgba(15, 15, 15, 0.6);padding: 15px;border-radius: 16px;border: 1px solid rgba(244, 241, 234, 0.05);}.vinyl {width: 50px; height: 50px;background: radial-gradient(circle, #111 30%, #333 40%, #111 50%, #444 60%, #111 70%);border-radius: 50%;animation: spin 4s linear infinite;}@keyframes spin { 100% { transform: rotate(360deg); } }.track-info { flex-grow: 1; }.track-title { font-size: 0.9rem; font-weight: 600; }.track-artist { font-size: 0.75rem; color: var(--text-muted); }.play-btn {background: none; border: 1px solid rgba(244, 241, 234, 0.2);color: var(--cream-white); padding: 8px 14px; border-radius: 20px;font-size: 0.75rem; cursor: pointer; text-transform: uppercase;}.play-btn:hover { background: var(--cream-white); color: #000; }/* INTERAKTIVER LIKE BUTTON */.like-action {display: flex;justify-content: center;margin-top: 10px;}.heart-btn {background: rgba(255,255,255,0.05);border: 1px solid rgba(244,241,234,0.1);color: var(--cream-white);padding: 10px 20px;border-radius: 30px;cursor: pointer;font-size: 0.85rem;display: flex;align-items: center;gap: 8px;transition: all 0.3s ease;}.heart-btn:hover {background: rgba(225, 48, 108, 0.1);border-color: rgba(225, 48, 108, 0.4);color: #e1306c;}
+    <script>
+        function ut() { document.getElementById('time').textContent = new Date().toLocaleTimeString('de-DE'); }
+        setInterval(ut, 1000); ut();
+        function lk() { const s = document.getElementById('lc'); s.textContent = parseInt(s.textContent) + 1; }
+    </script>
+</body>
+</html>
